@@ -1,0 +1,46 @@
+<div *ngIf="spinner" class="spinner">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <div class="d-flex justify-content-center">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<div *ngIf="!spinner" class="d-flex justify-content-center px-1 w-100 py-3 pb-5">
+  <mat-card class="profile-card">
+    <div class="row px-2">
+      <div class="bg-warning profile-detail col-md-6 p-2">
+        <div class="d-flex justify-content-center">
+          <img src="../../../favicon.ico" class="rounded-circle border profile-image">
+        </div>
+        <h2 class=" p-0 m-0 text-center">{{user?.name}}</h2>
+        <p class=" p-0 m-0 text-center">mean stack</p>
+        <div class="text-center"><button mat-button><mat-icon>phone_iphone</mat-icon> +91-{{user?.phone}}</button></div>
+        <div class="d-flex justify-content-center py-3">
+          <button mat-button color="danger" class=" py-1"  disabled>
+            <mat-checkbox (click)="onSeller()" [checked]="user?.isSeller"></mat-checkbox> &nbsp;&nbsp;&nbsp; <strong>Seller</strong>
+          </button>
+        </div>
+        <mat-card-actions *ngIf="user?.isSeller" class="d-flex justify-content-center">
+          <a routerLink="/add-product" mat-button color="danger">
+            <mat-icon>add</mat-icon> Add Product
+          </a>
+          <a routerLink="/user/product-list" mat-button>
+            <mat-icon>list</mat-icon> Product List
+          </a>
+        </mat-card-actions>
+      </div>
+      <div class="d-flex justify-content-center bg-light  col-md-6 p-2">
+       <div class="address p-3 ">
+        <mat-list>
+          <mat-list-item> <h3 class="p-0 m-0"><strong>ADDRESS</strong></h3></mat-list-item>
+          <mat-list-item class=" p-0 m-0 "><strong>street/village:&nbsp;</strong> Patila</mat-list-item>
+          <mat-list-item class=" p-0 m-0 "><strong>locality/post:&nbsp;</strong> samoura</mat-list-item>
+          <mat-list-item class=" p-0 m-0 "><strong>area/city:&nbsp;</strong> garhwa</mat-list-item>
+          <mat-list-item class=" p-0 m-0 "><strong>state:&nbsp;</strong> jharkhand</mat-list-item>
+          <mat-list-item class=" p-0 m-0 "><strong>country:&nbsp;</strong> india</mat-list-item>
+          <mat-list-item class=" p-0 m-0 "><strong>pincode:&nbsp;</strong> 822120</mat-list-item>
+         </mat-list>
+       </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

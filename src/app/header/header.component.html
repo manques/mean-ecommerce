@@ -1,0 +1,40 @@
+<mat-toolbar class="fixed-top" color="primary">
+  <div class="head w-100 d-flex justify-content-around">
+    <div class="left">
+      <!-- menu toggler -->
+      <button class="menu"  mat-icon-button (click)="sidenavToggler.emit()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- logo -->
+      <a routerLink="">
+        <img src="../../favicon.ico">
+      </a>
+    </div>
+    <div class="middle px-1 flex-grow-1">
+      <div class="d-flex justify-content-center">
+        middle
+      </div>
+    </div>
+    <div class="right">
+      <!-- search -->
+      <a routerLink="/search" color="accent" mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </a>
+      <!-- user -->
+      <a *ngIf="!auth" routerLink="/user" mat-icon-button>
+        <mat-icon>person</mat-icon>
+      </a>
+      <a *ngIf="auth" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+      </a>
+      <mat-menu #menu="matMenu">
+        <a routerLink="/profile" mat-menu-item>profile</a>
+        <a (click)="logout()" mat-menu-item>logout</a>
+      </mat-menu>
+      <!-- cart button -->
+      <a routerLink="/cart" mat-icon-button>
+        <mat-icon>shopping_cart</mat-icon>
+      </a>
+    </div>
+  </div>
+</mat-toolbar>

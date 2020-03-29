@@ -1,0 +1,10 @@
+.user{
+  width: 360px;
+}
+
+@media screen and (min-width: 600px){
+  .user {
+    width: 400px;
+  }
+}
+

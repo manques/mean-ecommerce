@@ -1,0 +1,9 @@
+.login{
+  width: 360px;
+}
+
+@media screen and (min-width: 600px){
+  .login {
+    width: 400px;
+  }
+}

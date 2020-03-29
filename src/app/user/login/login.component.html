@@ -1,0 +1,32 @@
+<div *ngIf="spinner" class=" w-100 spinner">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <div class="d-flex justify-content-center p-5">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<div *ngIf="!spinner" class="d-flex pt-3 justify-content-center">
+  <mat-card class="login">
+    <div class="p-3 bg-light">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- email / phone -->
+        <div class="d-flex justify-content-center">
+          <mat-form-field  appearance="outline">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-label>Username(Email/Phone)</mat-label>
+            <input matInput formControlName="emailPhone" />
+          </mat-form-field>
+        </div>
+        <!-- password -->
+        <div class="d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-icon matPrefix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'text' : 'password'" />
+          </mat-form-field>
+        </div>
+        <!-- submit -->
+        <button  class="w-100" color="accent" mat-raised-button [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+  </mat-card>
+</div>

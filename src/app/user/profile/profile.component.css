@@ -1,0 +1,10 @@
+
+.profile-image {
+  height: 100px;
+  width: 100px;
+}
+
+.address, .profile-detail{
+  min-width: 350px;
+  height: auto;
+}

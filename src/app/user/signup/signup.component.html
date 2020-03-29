@@ -1,0 +1,55 @@
+<div class="d-flex pt-3 justify-content-center">
+  <mat-card class="signup">
+        <!-- spinner -->
+        <div *ngIf="spinner" class="spinner">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          <div class="d-flex justify-content-center p-5">
+            <mat-spinner></mat-spinner>
+          </div>
+        </div>
+        <!-- main content -->
+        <div *ngIf="!spinner" class="d-flex justify-content-center bg-light py-3">
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <!-- name -->
+            <div class="d-flex justify-content-center">
+              <mat-form-field appearance="outline">
+                <mat-icon matPrefix class="">person</mat-icon>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" />
+              </mat-form-field>
+            </div>
+            <!-- email -->
+            <div class="d-flex justify-content-center">
+              <mat-form-field appearance="outline">
+                <mat-icon matPrefix>email</mat-icon>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" />
+              </mat-form-field>
+            </div>
+            <!-- Phone -->
+            <div class="d-flex justify-content-center">
+              <mat-form-field appearance="outline">
+                <mat-icon matPrefix>phone</mat-icon>
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="phone" />
+              </mat-form-field>
+            </div>
+            <!-- Password -->
+            <div class="d-flex justify-content-center">
+              <mat-form-field appearance="outline">
+                <mat-icon matPrefix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-label>Password</mat-label>
+                <input [type]="hide ? 'text' : 'password'" matInput formControlName="password">
+              </mat-form-field>
+            </div>
+            <!-- seller -->
+            <div class="d-flex justify-content-center pb-2">
+              <mat-checkbox formControlName="isSeller"></mat-checkbox>&nbsp; You want to sell
+            </div>
+            <!-- submit -->
+            <button class="w-100"  mat-raised-button color="accent" [disabled]="signupForm.invalid">Signup</button>
+            <!-- end -->
+          </form>
+        </div>
+  </mat-card>
+</div>

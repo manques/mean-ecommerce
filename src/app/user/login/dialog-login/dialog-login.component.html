@@ -1,0 +1,9 @@
+<div class="dialog w-100 h-100 p-0 m-0 bg-light d-flex flex-column  justify-content-between">
+  <h1 class="text-center" mat-dialog-title>{{data.title}}</h1>
+  <mat-dialog-content class="text-center">
+    {{data.content}}
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="danger" (click)="onNoClose()">retry</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,69 @@
+<!-- spinner -->
+<div *ngIf="spinner" class="spinner">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <div class="d-flex justify-content-center p-5">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<!-- product form -->
+<div *ngIf="!spinner"  class="d-flex justify-content-center py-3 pb-5 mb-5">
+  <mat-card class="product-card">
+    <form class="bg-light py-3" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <!-- name -->
+      <div class="d-flex justify-content-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+      </div>
+      <!-- price -->
+      <div class="d-flex justify-content-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="price" />
+        </mat-form-field>
+      </div>
+      <!-- category -->
+      <div class="d-flex justify-content-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let cate of categories" [value]="cate">{{cate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- image -->
+      <div class="d-flex justify-content-center">
+        <div  class="d-flex flex-column pb-2">
+          <img *ngIf="src" [src]="src" [alt]="src" class="product-image" />
+          <input type="file" #file style="display: none;"  (change)="onChange($event)" />
+          <button type="button" (click)="file.click()"  mat-raised-button>add image</button>
+        </div>
+      </div>
+      <!-- in stock -->
+      <div class="d-flex justify-content-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Stock</mat-label>
+          <input matInput formControlName="stock">
+        </mat-form-field>
+      </div>
+      <!-- short description -->
+      <div class="d-flex justify-content-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Short Description</mat-label>
+          <textarea matInput formControlName="shortDescription"></textarea>
+        </mat-form-field>
+      </div>
+      <!-- long description -->
+      <div class="d-flex justify-content-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Long Description</mat-label>
+          <textarea matInput formControlName="longDescription"></textarea>
+        </mat-form-field>
+      </div>
+      <!-- button submit -->
+      <button type="submit" class="w-100" color="primary" mat-raised-button [disabled]="productForm.invalid">Add Product</button>
+      <!-- end -->
+    </form>
+  </mat-card>
+</div>
